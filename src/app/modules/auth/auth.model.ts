@@ -15,8 +15,8 @@ const userRegisterSchema = new Schema<TRegisterStudent>(
     thana: { type: String },
     district: { type: String },
     selectedThanas: {
-      type: [String], // Array of strings
-      required: false, 
+      type: [String], 
+      
     },
   },
   {
@@ -41,6 +41,12 @@ userRegisterSchema.post('save', function (doc, next) {
   next();
 });
 
+userRegisterSchema.pre("save", function (next) {
+  if (this.selectedThanas?.length === 0) {
+    this.selectedThanas = undefined; // ✅ Removes field when empty
+  }
+  next();
+});
 userRegisterSchema.statics.isUserExistsEmail = async function (email: string) {
   return await UserRegister.findOne({ email }).select('+password');
 };
