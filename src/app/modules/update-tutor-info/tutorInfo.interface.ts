@@ -10,6 +10,7 @@ export type TutorInfo = {
   };
   education?: {
     graduationCurriculum?: string;
+    graduationInstitute?: string;
     graduationGroup?: string;
     graduationInstituteType?: string;
     graduationPassingYear?: string;

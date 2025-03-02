@@ -20,17 +20,17 @@ export type TRegisterStudent = {
   selectedThanas?:string[]
 };
 export type TRegisterTutor = {
-  district: string;
   email: string;
   image: string;
   name: string;
-  password: string;
+  password?: string;
   passwordConfirm: string;
   phone: string;
   role: string;
-  thana: string;
   isDeactivate?:boolean
-
+  thana?: string;
+  district?: string;
+  selectedThanas?:string[]
 };
 
 

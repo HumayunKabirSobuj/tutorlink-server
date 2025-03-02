@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import { TRegisterStudent, UserModel } from './auth.interface';
 import config from '../../config';
 import bcrypt from 'bcrypt';
@@ -15,8 +15,7 @@ const userRegisterSchema = new Schema<TRegisterStudent>(
     thana: { type: String },
     district: { type: String },
     selectedThanas: {
-      type: [String], 
-      
+      type: [String],
     },
   },
   {
@@ -41,7 +40,7 @@ userRegisterSchema.post('save', function (doc, next) {
   next();
 });
 
-userRegisterSchema.pre("save", function (next) {
+userRegisterSchema.pre('save', function (next) {
   if (this.selectedThanas?.length === 0) {
     this.selectedThanas = undefined; // ✅ Removes field when empty
   }
@@ -61,5 +60,10 @@ userRegisterSchema.statics.isPasswordMatched = async function (
 // Create and export the User model
 export const UserRegister = model<TRegisterStudent, UserModel>(
   'Users',
+  userRegisterSchema,
+);
+
+export const TutorRegister = mongoose.model<TRegisterStudent>(
+  'Tutor',
   userRegisterSchema,
 );

@@ -14,6 +14,7 @@ const tutorInfoSchema = new Schema({
   education: {
     graduationCurriculum: { type: String, required: false },
     graduationGroup: { type: String, required: false },
+    graduationInstitute: { type: String, required: false },
     graduationInstituteType: { type: String, required: false },
     graduationPassingYear: { type: String, required: false },
     graduationResult: { type: String, required: false },
@@ -46,3 +47,5 @@ export const tutorInfoModel = mongoose.model<TutorInfo>(
   'TutorInformation',
   tutorInfoSchema,
 );
+
+

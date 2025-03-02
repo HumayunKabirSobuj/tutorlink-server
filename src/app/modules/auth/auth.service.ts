@@ -34,9 +34,9 @@ const loginUser = async (payload: TLoginUser) => {
   const jwtPayload = {
     name: user.name,
     email: user.email,
-    phone:user.phone,
+    phone: user.phone,
     role: user.role,
-    image:user.image,
+    image: user.image,
   };
 
   // console.log(jwtPayload);
@@ -62,9 +62,8 @@ const registerStudent = async (payload: TRegisterStudent) => {
   const result = await UserRegister.create(payload);
   return result;
 };
-const registerTutor= async (payload: TRegisterTutor) => {
-
-  console.log(payload);
+const registerTutor = async (payload: TRegisterTutor) => {
+  // console.log(payload);
   const result = await UserRegister.create(payload);
   return result;
 };
@@ -76,12 +75,16 @@ const getAllUserFromDB = async () => {
 
 const deactiveAccount = async (id: string) => {
   // console.log(id);
-  const result = await UserRegister.findByIdAndUpdate(id, { isDeactivate: true });
+  const result = await UserRegister.findByIdAndUpdate(id, {
+    isDeactivate: true,
+  });
   return result;
 };
 const activeAccountIntoDB = async (id: string) => {
   // console.log(id);
-  const result = await UserRegister.findByIdAndUpdate(id, { isDeactivate: false });
+  const result = await UserRegister.findByIdAndUpdate(id, {
+    isDeactivate: false,
+  });
   return result;
 };
 
