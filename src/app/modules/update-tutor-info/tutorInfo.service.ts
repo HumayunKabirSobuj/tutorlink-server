@@ -1,13 +1,6 @@
 import { TutorInfo } from './tutorInfo.interface';
 import { tutorInfoModel } from './tutorInfo.model';
 
-// const updateTurorInfoIntoDB = async (payload: Partial<TutorInfo>) => {
-//     const data = payload
-//     console.log(data);
-//   const result = await tutorInfoModel.findOneAndUpdate();
-// //   return result;
-// };
-
 const updateTurorInfoIntoDB = async (payload: TutorInfo) => {
   const { email } = payload.tutorInfo || {}; // Destructure email from tutorInfo
 
@@ -29,6 +22,12 @@ const updateTurorInfoIntoDB = async (payload: TutorInfo) => {
   }
 };
 
+const getAllTutorInfomationFromDB = async () => {
+  const result = await tutorInfoModel.find();
+  return result;
+};
+
 export const TutorInfoService = {
   updateTurorInfoIntoDB,
+  getAllTutorInfomationFromDB
 };

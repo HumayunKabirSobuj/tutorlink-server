@@ -12,7 +12,20 @@ const updateTutorInfo = catchAsync(async (req, res) => {
       data: result,
   });
 });
+const getAllTutorInfo = catchAsync(async (req, res) => {
+  const result = await TutorInfoService.getAllTutorInfomationFromDB();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Tutor infomation retrived successfully',
+      data: result,
+  });
+});
+
+
+
 
 export const TutorInfoController = {
   updateTutorInfo,
+  getAllTutorInfo
 };
