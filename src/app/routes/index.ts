@@ -10,7 +10,7 @@ const moduleRoutes = [
     route: AuthRoutes,
   },
   {
-    path: '/turor',
+    path: '/tutor',
     route:TutorInfoRoutes
   },
 ];
