@@ -3,12 +3,8 @@ import { TNeedTutor } from './needTutor.interface';
 import NeedTutor from './needTutor.model';
 
 const addNeedTutorPostIntoDB = async (payload: TNeedTutor) => {
-  try {
-    const result = await NeedTutor.create(payload);
-    return result;
-  } catch (error) {
-    console.error('Error updating or inserting tutor info:', error);
-  }
+  const result = await NeedTutor.create(payload);
+  return result;
 };
 
 const getAllNeedTutorPostFromDB = async () => {
