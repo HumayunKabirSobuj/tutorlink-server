@@ -24,17 +24,23 @@ const getOneNeedTutorPostFromDB = async (id: string) => {
 //   return result;
 // };
 
-
 const singleStudentNeedTutorPostFromDB = async (id: string) => {
-  const result = await NeedTutor.find({ studentId: new mongoose.Types.ObjectId(id) });
+  const result = await NeedTutor.find({
+    studentId: new mongoose.Types.ObjectId(id),
+  });
   return result;
 };
 
+const deleteTutorNeedPostFromDB = async (id: string) => {
+  const result = await NeedTutor.findByIdAndDelete(id);
+  return result;
+};
 
 export const NeedTutorService = {
   addNeedTutorPostIntoDB,
   //   getAllTutorInfomationFromDB
   getAllNeedTutorPostFromDB,
   getOneNeedTutorPostFromDB,
-  singleStudentNeedTutorPostFromDB
+  singleStudentNeedTutorPostFromDB,
+  deleteTutorNeedPostFromDB,
 };

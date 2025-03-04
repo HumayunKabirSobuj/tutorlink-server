@@ -11,4 +11,9 @@ router.get(
   needTutorController.singleStudentNeedTutorInfo,
 );
 
+router.delete(
+  '/delete-need-tutor-post',
+  needTutorController.deleteNeedTutorPost,
+);
+
 export const needTutorRoutes = router;
