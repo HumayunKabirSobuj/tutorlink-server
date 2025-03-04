@@ -31,9 +31,20 @@ const getOneNeedTutorInfo = catchAsync(async (req, res) => {
       data: result,
   });
 });
+const singleStudentNeedTutorInfo = catchAsync(async (req, res) => {
+  console.log(req.params);
+ const result = await NeedTutorService.singleStudentNeedTutorPostFromDB(req.params.id)
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Single Student Need Tutor Post retrived successfully',
+      data: result,
+  });
+});
 
 export const needTutorController = {
   addNeedTutor,
   getAllNeedTutorInfo,
-  getOneNeedTutorInfo
+  getOneNeedTutorInfo,
+  singleStudentNeedTutorInfo
 };

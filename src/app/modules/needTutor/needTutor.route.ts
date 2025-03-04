@@ -6,5 +6,9 @@ const router = express.Router();
 router.post('/add-need-tutor', needTutorController.addNeedTutor);
 router.get('/:id', needTutorController.getOneNeedTutorInfo);
 router.get('/', needTutorController.getAllNeedTutorInfo);
+router.get(
+  '/my-need-tutor-post/:id',
+  needTutorController.singleStudentNeedTutorInfo,
+);
 
 export const needTutorRoutes = router;
