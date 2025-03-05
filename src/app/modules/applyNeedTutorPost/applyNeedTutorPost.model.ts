@@ -22,6 +22,11 @@ const ApplyNeedTutorPostSchema = new Schema<TApplyNeedTutorPost>({
     required: false,
     default:"Not_Selected"
   },
+  paymentStatus: {
+    type: String,
+    required: false,
+    default:"Not_Pay"
+  },
 });
 
 export const ApplyNeedTutorPost = model(

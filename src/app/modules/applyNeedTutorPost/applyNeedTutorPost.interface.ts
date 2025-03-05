@@ -5,4 +5,5 @@ export type TApplyNeedTutorPost = {
   tutionId: Types.ObjectId;
   tutorId: Types.ObjectId;
   selectStatus?: string;
+  paymentStatus?: string;
 };
