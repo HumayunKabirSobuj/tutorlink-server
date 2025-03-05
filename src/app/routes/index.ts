@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { TutorInfoRoutes } from '../modules/update-tutor-info/tutorInfo.route';
 import { needTutorRoutes } from '../modules/needTutor/needTutor.route';
+import { applyNeedTutorRoutes } from '../modules/applyNeedTutorPost/applyNeedTutorPost.route';
 
 const router = Router();
 
@@ -17,6 +18,10 @@ const moduleRoutes = [
   {
     path: '/need-tutor',
     route: needTutorRoutes,
+  },
+  {
+    path: '/apply-need-tutor',
+    route: applyNeedTutorRoutes,
   },
 ];
 
