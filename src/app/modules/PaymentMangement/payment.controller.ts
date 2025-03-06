@@ -4,14 +4,14 @@ import sendResponse from '../../utils/sendResponse';
 import { paymentService } from './payment.service';
 
 const paymentSuccess = catchAsync(async (req, res) => {
-  const tranId = req.params.tranId;
+  const productId = req.params.productId;
   // console.log('Transaction ID:', tranId);
-  await paymentService.paymentSuccessfullIntoDB(tranId);
+  await paymentService.paymentSuccessfullIntoDB(productId);
 
-  res.redirect(`http://localhost:3000/payment-successful/${req.params.tranId}`);
+  res.redirect(`http://localhost:3000/payment-successful/${req.params.productId}`);
 });
 const paymentFailed = catchAsync(async (req, res) => {
-  res.redirect(`https://bookbazzar-online-ph-a4.vercel.app/payment-failed/${req.params.tranId}`);
+  res.redirect(`http://localhost:3000/payment-failed/${req.params.productId}`);
 });
 
 const getAdminOrderData = catchAsync(async (req, res) => {

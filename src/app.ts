@@ -61,7 +61,7 @@ app.post('/order', async (req, res) => {
     currency: 'BDT',
     tran_id: tran_id, // use unique tran_id for each api call
     success_url: `http://localhost:8080/payment/success/${product?._id.toHexString()}`,
-    fail_url: `http://localhost:8080/payment/payment/failed/${product?._id.toHexString()}`,
+    fail_url: `http://localhost:8080/payment/failed/${product?._id.toHexString()}`,
     cancel_url: 'http://localhost:3030/cancel',
     ipn_url: 'http://localhost:3030/ipn',
     shipping_method: 'Courier',

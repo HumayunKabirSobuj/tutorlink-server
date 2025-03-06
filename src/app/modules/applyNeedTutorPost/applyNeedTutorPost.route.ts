@@ -7,9 +7,11 @@ router.post('/apply', ApplyTutorPostController.applyNeedTutionPost);
 router.get('/', ApplyTutorPostController.getAllApplyNeedTutionPost);
 router.patch('/:id', ApplyTutorPostController.setTutuorSelected);
 router.get('/:id', ApplyTutorPostController.getSingleApplyNeedTutionPost);
+router.get('/get-tutor-apply/:id', ApplyTutorPostController.getTutorApplyPosts);
+
 router.get(
-  '/get-tutor-apply/:id',
-  ApplyTutorPostController.getTutorApplyPosts,
+  '/get-student-enroll-course/:id',
+  ApplyTutorPostController.getStudentEnrollCourse,
 );
 
 export const applyNeedTutorRoutes = router;

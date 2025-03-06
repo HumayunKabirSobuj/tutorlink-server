@@ -69,10 +69,23 @@ const getTutorApplyPosts = catchAsync(async (req, res) => {
   });
 });
 
+const getStudentEnrollCourse = catchAsync(async (req, res) => {
+  const result = await ApplyNeedTutorPostService.getStudentEnrollCourseFromDB(
+    req.params.id,
+  );
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Student enroll courses retrived successfully',
+    data: result,
+  });
+});
+
 export const ApplyTutorPostController = {
   applyNeedTutionPost,
   getAllApplyNeedTutionPost,
   getSingleApplyNeedTutionPost,
   setTutuorSelected,
-  getTutorApplyPosts
+  getTutorApplyPosts,
+  getStudentEnrollCourse
 };

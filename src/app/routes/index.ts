@@ -3,6 +3,8 @@ import { AuthRoutes } from '../modules/auth/auth.route';
 import { TutorInfoRoutes } from '../modules/update-tutor-info/tutorInfo.route';
 import { needTutorRoutes } from '../modules/needTutor/needTutor.route';
 import { applyNeedTutorRoutes } from '../modules/applyNeedTutorPost/applyNeedTutorPost.route';
+import { tutoringPostRoutes } from '../modules/tutoringPost/tutoringPost.route';
+import { applyTutoringRoutes } from '../modules/applyTutoringPost/applyTutoringPost.route';
 
 const router = Router();
 
@@ -22,6 +24,14 @@ const moduleRoutes = [
   {
     path: '/apply-need-tutor',
     route: applyNeedTutorRoutes,
+  },
+  {
+    path: '/tutoring-post',
+    route: tutoringPostRoutes,
+  },
+  {
+    path: '/apply-tutoring-request',
+    route: applyTutoringRoutes,
   },
 ];
 
