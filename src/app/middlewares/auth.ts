@@ -37,7 +37,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     }
 
     // checking if the user is blocked
-    if (user?.isBlocked) {
+    if (user?.isDeactivate) {
       throw new AppError(StatusCodes.FORBIDDEN, 'This user is dectivated !');
     }
 

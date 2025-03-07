@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: ['https://tutorlink-online.vercel.app'],
     credentials: true,
   }),
 );
@@ -48,23 +48,22 @@ const tran_id = new mongoose.Types.ObjectId().toString();
 app.post('/order', async (req, res) => {
   const orderInfo = req.body;
   // console.log(orderInfo);
-  const product = await ApplyNeedTutorPost.findById({ _id: orderInfo.id })
+  const product = (await ApplyNeedTutorPost.findById({ _id: orderInfo.id })
     .populate('studentId')
     .populate('tutorId')
-    .populate('tutionId') as any;
+    .populate('tutionId')) as any;
   // console.log(product);
 
-  const { studentId, tutionId, } = product;
+  const { studentId, tutionId } = product;
 
   // console.log({ studentId, tutionId, tutorId });
-
 
   const data = {
     total_amount: tutionId?.salaryRange,
     currency: 'BDT',
     tran_id: tran_id, // use unique tran_id for each api call
-    success_url: `http://localhost:8080/payment/success/${product?._id.toHexString()}`,
-    fail_url: `http://localhost:8080/payment/failed/${product?._id.toHexString()}`,
+    success_url: `https://tutorlink-backend.vercel.app/payment/success/${product?._id.toHexString()}`,
+    fail_url: `https://tutorlink-backend.vercel.app/payment/failed/${product?._id.toHexString()}`,
     cancel_url: 'http://localhost:3030/cancel',
     ipn_url: 'http://localhost:3030/ipn',
     shipping_method: 'Courier',
@@ -96,18 +95,16 @@ app.post('/order', async (req, res) => {
 
   // console.log(sslcz);
   try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const apiResponse: any = await sslcz.init(data); // Use await here
     // Redirect the user to payment gateway
     const GatewayPageURL = apiResponse.GatewayPageURL;
     res.send({ url: GatewayPageURL });
 
-   
     // console.log('Final Order : ', finalOrder);
     // console.log('Order Saved: ', result);
 
     // console.log('Redirecting to: ', GatewayPageURL);
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   } catch (error) {
     // console.error('Error occurred:', error);
     res.status(500).send({ error: 'Something went wrong' });
@@ -116,23 +113,22 @@ app.post('/order', async (req, res) => {
 app.post('/tutoring-order', async (req, res) => {
   const orderInfo = req.body;
   // console.log(orderInfo);
-  const product = await ApplyTutoringPost.findById({ _id: orderInfo.id })
+  const product = (await ApplyTutoringPost.findById({ _id: orderInfo.id })
     .populate('studentId')
     .populate('tutorId')
-    .populate('tutionId') as any;
+    .populate('tutionId')) as any;
   // console.log(product);
 
-  const { studentId, tutionId, } = product;
+  const { studentId, tutionId } = product;
 
   // console.log({ studentId, tutionId, tutorId });
-
 
   const data = {
     total_amount: tutionId?.salaryRange,
     currency: 'BDT',
     tran_id: tran_id, // use unique tran_id for each api call
-    success_url: `http://localhost:8080/tutoring-payment/success/${product?._id.toHexString()}`,
-    fail_url: `http://localhost:8080/tutoring-payment/failed/${product?._id.toHexString()}`,
+    success_url: `https://tutorlink-backend.vercel.app/tutoring-payment/success/${product?._id.toHexString()}`,
+    fail_url: `https://tutorlink-backend.vercel.app/tutoring-payment/failed/${product?._id.toHexString()}`,
     cancel_url: 'http://localhost:3030/cancel',
     ipn_url: 'http://localhost:3030/ipn',
     shipping_method: 'Courier',
@@ -164,18 +160,16 @@ app.post('/tutoring-order', async (req, res) => {
 
   // // console.log(sslcz);
   try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const apiResponse: any = await sslcz.init(data); // Use await here
     // Redirect the user to payment gateway
     const GatewayPageURL = apiResponse.GatewayPageURL;
     res.send({ url: GatewayPageURL });
 
-   
     // console.log('Final Order : ', finalOrder);
     // console.log('Order Saved: ', result);
 
     // console.log('Redirecting to: ', GatewayPageURL);
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   } catch (error) {
     // console.error('Error occurred:', error);
     res.status(500).send({ error: 'Something went wrong' });

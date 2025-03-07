@@ -8,10 +8,10 @@ const paymentSuccess = catchAsync(async (req, res) => {
   // console.log('Transaction ID:', tranId);
   await paymentService.paymentSuccessfullIntoDB(productId);
 
-  res.redirect(`http://localhost:3000/payment-successful/${req.params.productId}`);
+  res.redirect(`https://tutorlink-online.vercel.app/payment-successful/${req.params.productId}`);
 });
 const paymentFailed = catchAsync(async (req, res) => {
-  res.redirect(`http://localhost:3000/payment-failed/${req.params.productId}`);
+  res.redirect(`https://tutorlink-online.vercel.app/payment-failed/${req.params.productId}`);
 });
 
 const getAdminOrderData = catchAsync(async (req, res) => {
