@@ -5,6 +5,7 @@ import { needTutorRoutes } from '../modules/needTutor/needTutor.route';
 import { applyNeedTutorRoutes } from '../modules/applyNeedTutorPost/applyNeedTutorPost.route';
 import { tutoringPostRoutes } from '../modules/tutoringPost/tutoringPost.route';
 import { applyTutoringRoutes } from '../modules/applyTutoringPost/applyTutoringPost.route';
+import { blogRoutes } from '../modules/blogManagement/blog.route';
 
 const router = Router();
 
@@ -32,6 +33,10 @@ const moduleRoutes = [
   {
     path: '/apply-tutoring-request',
     route: applyTutoringRoutes,
+  },
+  {
+    path: '/blogs',
+    route: blogRoutes,
   },
 ];
 
