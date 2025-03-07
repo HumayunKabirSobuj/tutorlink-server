@@ -27,6 +27,11 @@ const ApplyTutoringPostSchema = new Schema<TApplyTutoringPost>({
     required: false,
     default: 'Not_Pay',
   },
+  isDeleted: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 
 export const ApplyTutoringPost = model(

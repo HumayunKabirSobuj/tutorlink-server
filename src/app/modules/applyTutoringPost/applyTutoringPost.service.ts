@@ -27,6 +27,7 @@ const ApplyTutoringPostIntoDB = async (payload: TApplyTutoringPost) => {
 //     .populate('tutionId');
 //   return result;
 // };
+
 // const getSingleApplyNeedTutorPostFromDB = async (id: string) => {
 //   // console.log(id);
 //   const result = await ApplyNeedTutorPost.find({
@@ -82,8 +83,23 @@ const getTutorTutoringApplyListFromDBFromDB = async (id: string) => {
 //   return result;
 // };
 
+const getStudentApplyForApplyTutoringPostFromDB = async (id: string) => {
+  // console.log(id);
+  const result = await ApplyTutoringPost.find(
+    {
+      studentId: new mongoose.Types.ObjectId(id),
+    },
+    { isDeleted: false },
+  )
+    .populate('studentId')
+    .populate('tutorId')
+    .populate('tutionId');
+  return result;
+};
+
 export const ApplyTutoringPostService = {
   ApplyTutoringPostIntoDB,
   getTutorTutoringApplyListFromDBFromDB,
   setSelectedStudentIntoDB,
+  getStudentApplyForApplyTutoringPostFromDB
 };
